@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\CreateUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Admin\User;
 use App\Admin\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Exception;
 
 
 class UserController extends BaseController
@@ -25,7 +26,7 @@ class UserController extends BaseController
             $this->data['title'] = 'Users'; 
 
             $this->data['user_requests'] = User::whereActive(false)->whereCode('verify')->get();
-            $this->data['users'] = User::where('code','!=','verify')
+            $this->data['users'] = User::where('id', '!=', Auth::id())->where('code','!=','verify')
                 ->where('code','!=','denied')
                 ->where('activated_at','>','')
                 ->with(['roles'])

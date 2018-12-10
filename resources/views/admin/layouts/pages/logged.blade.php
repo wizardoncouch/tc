@@ -53,7 +53,7 @@
 <aside class="sidebar-container">
 	<div class="brand-header">
 		<div class="float-left pt-4 text-muted sidebar-close"><em class="ion-arrow-left-c icon-lg"></em></div><a class="brand-header-logo" href="#">
-			<span class="brand-header-logo-text">teamconsole.io</span></a>
+			<span class="brand-header-logo-text">admin.teamconsole.io</span></a>
 		</div>
 		<div class="sidebar-content">
 			<div class="sidebar-toolbar">

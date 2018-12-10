@@ -35,9 +35,26 @@ Route::group([
 				Route::post('update', 'UserController@update')->name('admin.user.update');
 				Route::get('{id}', 'UserController@show')->name('admin.user.show');
 			});
+
+            Route::get('clients', 'ClientController@index')->name('admin.client.index')->middleware('auth:admin');
+            Route::group(['prefix' => 'client'], function(){
+                Route::get('create', 'ClientController@create')->name('admin.client.create');
+                Route::post('store', 'ClientController@store')->name('admin.client.store');
+                Route::get('{id}/edit', 'ClientController@edit')->name('admin.client.edit');
+                Route::post('update', 'ClientController@update')->name('admin.client.update');
+                Route::get('{id}', 'ClientController@show')->name('admin.client.show');
+            });
+
+            Route::get('templates', 'TemplateController@index')->name('admin.template.index')->middleware('auth:admin');
+            Route::group(['prefix' => 'template'], function(){
+                Route::get('create', 'TemplateController@create')->name('admin.template.create');
+                Route::post('store', 'TemplateController@store')->name('admin.template.store');
+                Route::get('{id}/edit', 'TemplateController@edit')->name('admin.template.edit');
+                Route::post('update', 'TemplateController@update')->name('admin.template.update');
+                Route::get('{id}', 'TemplateController@show')->name('admin.template.show');
+            });
 		});
 
-		Route::get('/clients', 'UserController@index')->name('admin.client.index')->middleware('auth:admin');
 		Route::get('/templates', 'UserController@index')->name('admin.template.index')->middleware('auth:admin');
 		Route::get('/', 'DashboardController@index')->name('admin.dashboard.index')->middleware('auth:admin');
 	});

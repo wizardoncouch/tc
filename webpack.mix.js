@@ -19,7 +19,7 @@ mix.styles([
     'resources/theme/app.css'
 ], 'public/css/vendor.css');
 
-getFiles('resources/sass/admin').forEach(function (filename) {
+/*getFiles('resources/sass/admin').forEach(function (filename) {
     mix.sass('resources/sass/admin/' + filename, 'public/css/admin');
-});
+});*/
 

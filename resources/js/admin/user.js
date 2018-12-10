@@ -3,6 +3,7 @@
 
     $(getRoles);
     $(createUser);
+    $(updateUser);
     $(approveUser);
 
     function getRoles() {
@@ -36,6 +37,34 @@
             }
         });
     }
+
+    function updateUser() {
+
+        if (!$.fn.validate) return;
+
+        var $form = $('#admin-user-edit');
+        $form.validate({
+            errorPlacement: errorPlacementInput,
+            // Form rules
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                roles: {
+                    required: true
+                }
+            },
+            submitHandler: function(form) {
+                $('#admin-user-edit-submit-button').html('Saving...').attr('disabled', 'disabled');
+                form.submit();
+            }
+        });
+    }
+
     function approveUser() {
 
         if (!$.fn.validate) return;
@@ -59,14 +88,17 @@
     // Necessary to place dyncamic error messages
     // without breaking the expected markup for custom input
     function errorPlacementInput(error, element) {
-        console.log(element);
+
         if ( element.is(':radio') || element.is(':checkbox')) {
             error.insertAfter(element.parent());
-        }else if(element.hasClass('select2-hidden-accessible')){
-            error.insertAfter(element.parent().find('.select2'));
+        }else if(element.attr('id') == 'roles'){
+            element.parent().find('span.select2').find('.select2-selection').addClass('border border-danger');
+            error.insertAfter(element.parent());
         }else {
             error.insertAfter(element);
         }
+        error.addClass('text-sm text-danger');
+
     }
 
         //for future use

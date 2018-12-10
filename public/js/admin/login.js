@@ -1,1 +1,124 @@
-!function(t){var e={};function r(n){if(e[n])return e[n].exports;var i=e[n]={i:n,l:!1,exports:{}};return t[n].call(i.exports,i,i.exports,r),i.l=!0,i.exports}r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:n})},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="/",r(r.s=42)}({42:function(t,e,r){t.exports=r(43)},43:function(t,e){!function(){"use strict";function t(t,e){e.is(":radio")||e.is(":checkbox")?t.insertAfter(e.parent()):t.insertAfter(e)}$(function(){if(!$.fn.validate)return;$("#user-login").validate({errorPlacement:t,rules:{email:{required:!0,email:!0},password:{required:!0}},submitHandler:function(t){$("#submit-button").html("Authenticating...").attr("disabled","disabled"),t.submit()}})})}()}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(45);
+
+
+/***/ }),
+
+/***/ 45:
+/***/ (function(module, exports) {
+
+
+(function () {
+															'use strict';
+
+															$(userSignin);
+
+															function userSignin() {
+
+																														if (!$.fn.validate) return;
+
+																														var $form = $('#user-login');
+																														$form.validate({
+																																													errorClass: 'error text-danger text-sm',
+																																													validClass: 'success',
+																																													errorPlacement: errorPlacementInput,
+																																													// Form rules
+																																													rules: {
+																																																												email: {
+																																																																											required: true,
+																																																																											email: true
+																																																												},
+																																																												password: {
+																																																																											required: true
+																																																												}
+																																													},
+																																													submitHandler: function submitHandler(form) {
+																																																												$('#submit-button').html('Authenticating...').attr('disabled', 'disabled');
+																																																												form.submit();
+																																													}
+																														});
+															}
+
+															// Necessary to place dyncamic error messages
+															// without breaking the expected markup for custom input
+															function errorPlacementInput(error, element) {
+																														if (element.is(':radio') || element.is(':checkbox')) {
+																																													error.insertAfter(element.parent());
+																														} else {
+																																													error.insertAfter(element);
+																														}
+															}
+})();
+
+/***/ })
+
+/******/ });

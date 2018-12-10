@@ -30,7 +30,7 @@
 							<label for="email" class="col-sm-2 col-form-label">Roles:</label>
 							<div class="col-sm-10">
 								@foreach($user->roles as $role)
-									<span class="badge badge-secondary badge-pill p-2">{{$role->name}}</span>
+									<span class="badge badge-secondary badge-pill p-2">{{ucwords($role->name)}}</span>
 								@endforeach
 							</div>
 						</div>

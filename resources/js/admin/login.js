@@ -10,7 +10,9 @@
 
 	        var $form = $('#user-login');
 	        $form.validate({
-	            errorPlacement: errorPlacementInput,
+                errorClass:'error text-danger text-sm',
+                validClass: 'success',
+                errorPlacement: errorPlacementInput,
 	            // Form rules
 	            rules: {
 	                email: {

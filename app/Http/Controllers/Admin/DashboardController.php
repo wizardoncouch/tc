@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Admin\BaseController;
 use App\Admin\User;
 use App\Admin\Client;
+use Exception;
 
 class DashboardController extends BaseController
 {

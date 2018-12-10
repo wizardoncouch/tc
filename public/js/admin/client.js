@@ -60,63 +60,97 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 46:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(39);
 
 
 /***/ }),
 
-/***/ 47:
+/***/ 39:
 /***/ (function(module, exports) {
 
-
 (function () {
-															'use strict';
+    'use strict';
 
-															$(adminUserRegister);
+    $(createClient);
+    $(editClient);
 
-															function adminUserRegister() {
+    $.validator.addMethod('regex', function (value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9]*$/i.test(value);
+    }, 'Please enter one word, letters and numbers only.');
 
-																														if (!$.fn.validate) return;
+    function createClient() {
 
-																														var $form = $('#user-register');
-																														$form.validate({
-																																													errorClass: 'error text-danger text-sm',
-																																													validClass: 'success',
-																																													errorPlacement: errorPlacementInput,
-																																													// Form rules
-																																													rules: {
-																																																												name: {
-																																																																											required: true
-																																																												},
-																																																												email: {
-																																																																											required: true,
-																																																																											email: true
-																																																												}
-																																													},
-																																													submitHandler: function submitHandler(form) {
-																																																												$('#submit-button').html('Sending Request...').attr('disabled', 'disabled');
-																																																												form.submit();
-																																													}
-																														});
-															}
+        if (!$.fn.validate) return;
 
-															// Necessary to place dyncamic error messages
-															// without breaking the expected markup for custom input
-															function errorPlacementInput(error, element) {
-																														if (element.is(':radio') || element.is(':checkbox')) {
-																																													error.insertAfter(element.parent());
-																														} else {
-																																													error.insertAfter(element);
-																														}
-															}
+        var $form = $('#admin-client-create');
+        $form.validate({
+            errorPlacement: errorPlacementInput,
+            // Form rules
+            rules: {
+                slug: {
+                    required: true,
+                    regex: true
+                },
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            submitHandler: function submitHandler(form) {
+                $('#admin-client-create-submit-button').html('Saving...').attr('disabled', 'disabled');
+                form.submit();
+            }
+        });
+    }
+    function editClient() {
+
+        if (!$.fn.validate) return;
+
+        var $form = $('#admin-client-edit');
+        $form.validate({
+            errorPlacement: errorPlacementInput,
+            // Form rules
+            rules: {
+                slug: {
+                    required: true,
+                    regex: "^[a-zA-Z0-9]*$"
+                },
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            submitHandler: function submitHandler(form) {
+                $('#admin-client-create-submit-button').html('Saving...').attr('disabled', 'disabled');
+                form.submit();
+            }
+        });
+    }
+
+    // Necessary to place dyncamic error messages
+    // without breaking the expected markup for custom input
+    function errorPlacementInput(error, element) {
+        if (element.is(':radio') || element.is(':checkbox') || element.attr('name') == 'slug') {
+            error.insertAfter(element.parent());
+        } else {
+            error.insertAfter(element);
+        }
+        error.addClass('text-sm text-danger');
+    }
 })();
 
 /***/ })

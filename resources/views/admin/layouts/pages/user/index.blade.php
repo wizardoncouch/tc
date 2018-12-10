@@ -3,11 +3,10 @@
 <div class="row">
 	<div class="col-xl-7 col-xs-12">
 		<div class="cardbox">
-			<div class="cardbox-heading">
-				<strong>Users</strong>
-				<a class="text-info ml-2" href="{{ route('admin.user.create') }}">
-					<i class="fas fa-user-plus"></i>
-				</a>
+			<div class="cardbox-heading clearfix">
+                <a class="btn btn-info btn-sm ml-2 float-right" href="{{ route('admin.user.create') }}">
+                    <i class="fas fa-plus text-sm mr-1"></i> Add
+                </a>
 			</div>
 			<table class="table">
 				<thead>
